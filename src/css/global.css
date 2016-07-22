@@ -7,7 +7,7 @@
 */
 
 /* Adding example just to show that import is possible */
-@import "example.css";
+@import "../../node_modules/reveal/index.css";
 
 * {
   font-family: sans-serif;

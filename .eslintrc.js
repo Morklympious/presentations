@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": "google",
+  //"extends": "arenanet",
   "rules": {
 
   },
