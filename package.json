@@ -21,16 +21,20 @@
   "license": "MIT",
   "devDependencies": {
     "browserify": "^13.0.0",
+    "codemirror": "^5.17.0",
     "ecstatic": "^1.4.0",
     "eslint": "^2.9.0",
     "eslint-config-arenanet": "^2.0.5",
     "eslint-config-google": "^0.5.0",
     "express": "^4.13.4",
+    "highlight.js": "^9.5.0",
     "minifyify": "^7.3.2",
     "mithril": "^0.2.2-rc.1",
     "modular-css": "^0.21.0",
+    "postcss-discard-duplicates": "^2.0.1",
     "postcss-import": "^8.0.2",
     "reveal": "0.0.4",
+    "reveal.js": "^3.3.0",
     "shelljs": "^0.7.0",
     "watchify": "^3.7.0"
   }
