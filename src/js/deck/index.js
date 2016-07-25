@@ -1,3 +1,7 @@
 module.exports = [
-  require('./the-prototype.js')
+  [
+    require('./the-prototype.js')
+  ],
+   
+  []
 ];

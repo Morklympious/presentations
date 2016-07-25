@@ -1,5 +1,5 @@
 var m      = require("mithril"),
-    slides = require("./js/slides.js");
+    slides = require("./js/deck");
     
     // Presentation Slides. 
     //slides = require("./js/slides");
