@@ -5,7 +5,7 @@ var slide = {
   view: function() {
     return m("section", {}, [
         m("h1", {}, "The Prototype"),
-        m("span", "What is even happening right now?")
+        m("h2", "What is even happening right now?")
     ]);
   }
 }

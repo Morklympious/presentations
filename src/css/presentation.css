@@ -8,8 +8,7 @@ html, body {
 }
 
 body {
-  font-family: Bitter;
-  font-size: 4em;
+  font-family: sans-serif;
   line-height: 1.5;
   color: #efefef;
 
@@ -22,36 +21,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size:2rem;
 }
 
 h3 {
   font-weight: bold;
-}
-
-h1, h2 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: right;
-}
-
-a {
-  color: #f84;
-}
-
-pre, code {
-  background: #444;
-  font-family: Inconsolata;
-}
-
-pre {
-  padding: .5em;
-}
-
-code {
-  padding: 0 .25em;
-  margin: 0 .25em;
 }
 
 article {

@@ -1,14 +1,10 @@
 var m      = require("mithril"),
     slides = require("./js/deck");
-    
-    // Presentation Slides. 
-    //slides = require("./js/slides");
-    
+
 // Global CSS output by Browserify via Modular CSS
 require("./css/presentation.css");
 
-
-// Adopted from @BarneyCarroll's Ember London Slide Deck. 
+// Adopted from @BarneyCarroll's Ember London Slide Deck.
 let resolution = undefined;
 let buffer     = '';
 
@@ -70,5 +66,3 @@ m.route( document.body, "/0", {
       )
   }
 })
-
-
