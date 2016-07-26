@@ -1,0 +1,11 @@
+@import "codemirror.css";
+
+:global(.CodeMirror) {
+  font-size: 24px;
+  font-family: monospace;
+}
+
+:global(.CodeMirror pre) {
+  box-shadow: none;
+
+}
