@@ -12,21 +12,22 @@ var component = {
   controller: function(options) {
     var ctrl = this;
 
+    ctrl.code = (options && options.code) || {};
+
     ctrl.setup = function(element, initialized) {
+
       if(initialized) return;
 
-      ctrl.code = editor(element, {
+      ctrl.editor = editor(element, {
         lineNumbers: true,
-        //lineWrapping: true,
-        //theme: "twilight"
+        lineWrapping: true,
+        theme: "twilight",
+        value: ctrl.code
       });
-
-      window.editr = ctrl.code;
-
+      window.editor = ctrl.editor;
       setTimeout(function() {
-        ctrl.code.refresh();
-      }, 250);
-
+        ctrl.editor.refresh();
+      }, 1000);
     }
   },
 

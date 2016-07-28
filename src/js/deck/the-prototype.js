@@ -4,17 +4,18 @@ var m = require("mithril"),
 var slide = {
   view: function() {
     return m("section", {}, [
+
+      m("section", {}, [
+          m("h1", {}, "The Prototype"),
+          m("span", "What is even happening right now?")
+      ]),
+      m("section", {}, [
+          m("h1", {}, "The Prototype"),
+          m("span", "What is even happening right now?")
+      ]),
       m("section", [
         m("h1", "fucking get ready"),
         m(codemirror)
-      ]),
-      m("section", {}, [
-          m("h1", {}, "The Prototype"),
-          m("span", "What is even happening right now?")
-      ]),
-      m("section", {}, [
-          m("h1", {}, "The Prototype"),
-          m("span", "What is even happening right now?")
       ]),
 
 

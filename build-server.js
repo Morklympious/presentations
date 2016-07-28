@@ -6,9 +6,7 @@ var fs          = require('fs'),
     shell       = require('shelljs');
 
 var server      = express(),
-    builder     = browserify('./src/entry.js', {
-                  debug: true
-                });
+    builder     = browserify('./src/entry.js');
 
 /* Create directories for output */
 shell.mkdir('-p', 'dist/css');

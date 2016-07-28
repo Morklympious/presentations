@@ -8,14 +8,18 @@ var m      = require("mithril"),
 require("./css/import-reveal.css");
 require("./css/import-codemirror.css");
 
+
 function configure(element, initialized) {
    if(initialized) return;
-   console.log(element, initialized);
+
    Reveal.initialize({
-     height: 700,
-     width: 960,
+     height: 800,
+     width: 1280,
      center: false
    });
+
 }
 
-m.render(document.body, m("div", {class: "reveal", config: configure }, require("./js/slides.js")) );
+m.render(document.body, m("div", {class: "reveal", config: configure }, require("./js/slides.js")));
+
+setInterval(m.redraw, 5000);
