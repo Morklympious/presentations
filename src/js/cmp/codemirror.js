@@ -1,5 +1,6 @@
 var m = require("mithril"),
-    editor = require("codemirror");
+    editor = require("codemirror"),
+    Reveal = require("reveal.js");
 
 // Extra codemirror packages that need to be bundled.
 require('codemirror/mode/javascript/javascript');
@@ -24,8 +25,9 @@ var component = {
         theme: "twilight",
         value: ctrl.code
       });
-      window.editor = ctrl.editor;
-      setTimeout(function() {
+
+
+      setInterval(function() {
         ctrl.editor.refresh();
       }, 1000);
     }

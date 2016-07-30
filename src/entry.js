@@ -15,9 +15,8 @@ function configure(element, initialized) {
    Reveal.initialize({
      height: 800,
      width: 1280,
-     center: false
+     transition: "fade",
    });
-
 }
 
 m.render(document.body, m("div", {class: "reveal", config: configure }, require("./js/slides.js")));
