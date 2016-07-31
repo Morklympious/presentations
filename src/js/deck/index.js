@@ -18,10 +18,10 @@ module.exports = [
         m("section",   m("h1", "Agenda")),
         m("section", [
           m("ul", [
-            m("li", {class: "fragment"}, "What are Prototypes?"),
-            m("li", {class: "fragment"}, "How to use Prototypes"),
-            m("li", {class: "fragment"}, "How not to use Prototypes"),
-            m("li", {class: "fragment"}, "Other fun stuff")
+            m("li", "What are Prototypes?"),
+            m("li", "How to use Prototypes"),
+            m("li", "How not to use Prototypes"),
+            m("li", "Other fun stuff")
           ])
         ])
       ]);
