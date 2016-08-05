@@ -20,11 +20,9 @@ var component = {
       ctrl.editor = editor(element, {
         lineNumbers: true,
         lineWrapping: true,
-        value: 'var self = this' //ctrl.code ? ctrl.code : ''
+        value: ctrl.code ? ctrl.code : '',
+        theme: "twilight"
       });
-
-      console.log('ctrl.editor', ctrl.editor)
-
 
       setInterval(function() {
         ctrl.editor.refresh();

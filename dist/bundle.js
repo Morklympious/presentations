@@ -17009,6 +17009,8 @@ function configure(element, initialized) {
    Reveal.initialize({
      height: 600,
      width: 1200,
+     minScale: 1,
+     maxScale: 1,
      transition: "fade",
      center: false
    });
@@ -17039,11 +17041,9 @@ var component = {
       ctrl.editor = editor(element, {
         lineNumbers: true,
         lineWrapping: true,
-        value: 'var self = this' //ctrl.code ? ctrl.code : ''
+        value: ctrl.code ? ctrl.code : '',
+        theme: "twilight"
       });
-
-      console.log('ctrl.editor', ctrl.editor)
-
 
       setInterval(function() {
         ctrl.editor.refresh();
@@ -17216,7 +17216,7 @@ module.exports = [
   view: function() {
     return m("section", [
       m("section", [
-        m("h1", "All in all")
+        m("h1", "Thanks!")
       ])
     ]);
   }

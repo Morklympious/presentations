@@ -2,6 +2,9 @@
 h1 {
     margin: 24px 0
 }
+body {
+    zoom: 0.5
+}
 /* src/css/import-codemirror.css */
 /* BASICS */
 .CodeMirror {

@@ -150,7 +150,7 @@ module.exports = [
   view: function() {
     return m("section", [
       m("section", [
-        m("h1", "All in all")
+        m("h1", "Thanks!")
       ])
     ]);
   }

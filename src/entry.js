@@ -17,6 +17,8 @@ function configure(element, initialized) {
    Reveal.initialize({
      height: 600,
      width: 1200,
+     minScale: 1,
+     maxScale: 1,
      transition: "fade",
      center: false
    });
