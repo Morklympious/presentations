@@ -1,9 +1,13 @@
+/* src/css/global.css */
+h1 {
+    margin: 24px 0
+}
 /* src/css/import-codemirror.css */
 /* BASICS */
 .CodeMirror {
     /* Set height, width, borders, and global font properties here */
     font-family: monospace;
-    height: 300px;
+    height: 400px;
     color: black
 }
 /* PADDING */
@@ -420,13 +424,6 @@ div.CodeMirror-dragcursors {
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext {
     background: none
-}
-.CodeMirror {
-    font-size: 24px;
-    font-family: monospace
-}
-.CodeMirror pre {
-    box-shadow: none
 }
 /* src/css/import-reveal.css */
 /*!
@@ -1785,4 +1782,12 @@ html:-moz-full-screen-ancestor {
 }
 .reveal .slides {
     text-align: left
+}
+.reveal h1 {
+    font-size: 3rem;
+    margin: 1rem 0
+}
+.reveal h2 {
+    font-size: 2rem;
+    margin: 1rem 0
 }

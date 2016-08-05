@@ -16981,15 +16981,15 @@ CodeMirror.defineMIME("application/typescript", { name: "javascript", typescript
 }));
 
 },{}],7:[function(require,module,exports){
-module.exports = {
-    "CodeMirror": "CodeMirror"
-};
+module.exports = {};
 },{}],8:[function(require,module,exports){
+arguments[4][7][0].apply(exports,arguments)
+},{"dup":7}],9:[function(require,module,exports){
 module.exports = {
     "reveal": "reveal",
     "slides": "slides"
 };
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var m      = require("mithril"),
     Reveal = require("reveal.js");
 
@@ -16999,40 +16999,39 @@ var m      = require("mithril"),
 // Global CSS output by Browserify via Modular CSS
 require("./css/import-reveal.css");
 require("./css/import-codemirror.css");
+require("./css/global.css");
 
 
 function configure(element, initialized) {
+
    if(initialized) return;
 
    Reveal.initialize({
-     height: 800,
-     width: 1280,
+     height: 600,
+     width: 1200,
      transition: "fade",
+     center: false
    });
 }
 
-m.render(document.body, m("div", {class: "reveal", config: configure }, require("./js/slides.js")));
+m.render(document.body, m("div", {class: "reveal", config: configure}, require("./js/slides.js")));
 
-setInterval(m.redraw, 5000);
-
-},{"./css/import-codemirror.css":7,"./css/import-reveal.css":8,"./js/slides.js":12,"mithril":5,"reveal.js":6}],10:[function(require,module,exports){
+},{"./css/global.css":7,"./css/import-codemirror.css":8,"./css/import-reveal.css":9,"./js/slides.js":13,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
 var m = require("mithril"),
-    editor = require("codemirror"),
-    Reveal = require("reveal.js");
+    editor = require("codemirror");
 
 // Extra codemirror packages that need to be bundled.
 require('codemirror/mode/javascript/javascript');
 require("codemirror/addon/edit/matchbrackets");
 require("codemirror/addon/edit/closebrackets");
-//srequire("codemirror/addon/selection/active-line");
-//require("codemirror/addon/comment/continuecomment");
+
 
 var component = {
   controller: function(options) {
     var ctrl = this;
 
-    ctrl.code = (options && options.code) || {};
-
+    ctrl.code = (options && options.code) || undefined;
+    console.log(ctrl.code);
     ctrl.setup = function(element, initialized) {
 
       if(initialized) return;
@@ -17040,9 +17039,10 @@ var component = {
       ctrl.editor = editor(element, {
         lineNumbers: true,
         lineWrapping: true,
-        theme: "twilight",
-        value: ctrl.code
+        value: 'var self = this' //ctrl.code ? ctrl.code : ''
       });
+
+      console.log('ctrl.editor', ctrl.editor)
 
 
       setInterval(function() {
@@ -17051,24 +17051,29 @@ var component = {
     }
   },
 
-  view: function(ctrl, options) {
-    return m("div", {config: ctrl.setup});
+  view: function(ctrl) {
+    return m("div", {
+      config: ctrl.setup,
+      ondblclick: function() {
+        eval("(function() {" + ctrl.editor.getValue() + "})()")
+      }
+    });
   }
 }
 
 module.exports = component;
 
-},{"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
-var m = require("mithril");
-var codemirror = require("../cmp/codemirror");
+},{"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5}],12:[function(require,module,exports){
+var  m = require("mithril"),
+  code = require("../cmp/codemirror");
+
 
 module.exports = [
   {
     view: function() {
       return m("section", {}, [
-        m("section", [
           m("h1", "The Prototype"),
-        ])
+          m("h2", "What is even happening right now?")
       ]);
     }
   },
@@ -17076,130 +17081,151 @@ module.exports = [
   {
     view: function() {
       return m("section", {}, [
-        m("section",   m("h1", "Agenda")),
-        m("section", [
+        m("section",   [
+          m("h1", "Who am I?"),
           m("ul", [
-            m("li", "What are Prototypes?"),
-            m("li", "How to use Prototypes"),
-            m("li", "How not to use Prototypes"),
-            m("li", "Other fun stuff")
+            m("li", "Bradley Stafford"),
+            m("li", "Front-end Engineer @ Amazon (AUI Team)"),
+            m("li", "Code Jester"),
+            m("li", "Nicolas Cage enthusiast"),
+            m("li", "Non-sequitur list creator"),
+            m("li", "Hats")
+          ])
+        ]),
+      ]);
+    }
+  },
+
+  {
+    view: function() {
+     return m("section", {}, [
+      m("h1", "Let's talk about Prototypes"),
+      m("h2", "What is a prototype?"),
+      m("ul", [
+        m("li", "A prototype is the construct in javascript that allows inheritance and reusability in your code"),
+        m("li", "It also enables the basic, free functionality of the major types")
+      ]),
+      m("h2", "If you come from an OO background..."),
+      m("p", "...you can think of the prototype as the base class that instances inherit from")
+     ]);
+    }
+  },
+
+  {
+    view: function() {
+     return m("section", {}, [
+       m("h1", "Talking about code sucks."),
+       m("p", "So let's code about it."),
+       m(code, {code: 'var self = this, doot = "foot"'})
+     ]);
+   },
+
+  },
+
+  { // After demonstrating the object using a property not immediate to itself.
+   view: function() {
+     return m("section", {}, [
+       m("h1", "What the hell was that?"),
+       m("h2", "Wow Brad what is this third grade?"),
+       m("ul", [
+         m("li", "We used the object's prototype to gain access to a method"),
+         m("li", "Prototypes are cool because they're a single point of contact across types"),
+         m("li", "This was all possible thanks to the prototype chain!")
+       ])
+     ]);
+   }
+  },
+
+  { // Explain the Prototype Chain
+   view: function() {
+     return m("section", [
+       m("section", [
+         m("h1", "The Prototype Chain"),
+         m("ul", [
+           m("li", "It's some kind of... chain"),
+           m("li", "for prototypes"),
+           m("li", "like a happy trail of weird looking objects"),
+           m("li", "or a trail of tears if you don't like javascript"),
+         ])
+       ])
+     ]);
+   }
+  },
+
+  { // Object with toBradley Example
+   view: function() {
+    return m("section", {}, [
+      m("h1", "Talking about code sucks. (Pt. II)"),
+      m("p", "The Reckoning."),
+      m(code)
+    ]);
+   }
+  },
+
+  { // Example with object get/set for overview
+    view: function() {
+      return m("section", [
+        m("section", [
+          m("h1", "Another example"),
+          m(code)
+        ]),
+        m("section", [
+          m("h1", "Accessing stuff"),
+          m("ul", [
+            m("li", "Is the stuff I'm trying to access on the current object?"),
+            m("li", "If not, is there a prototype I can look at or whatever?"),
+            m("li", "No? Oh. Sorry dude, it doesn't exist."),
+            m("li", "Snake up the prototype chain and look for the property you need.")
           ])
         ])
       ]);
     }
   },
 
-  {
-    view: function() {
-     return m("section", {}, [
+  { // Ways to use the prototype
+   view: function() {
+     return m("section", [
        m("section", [
-         m("h1", "Who is this clown?")
-       ]),
-       m("section", [
-         m("h1", "Bradley Stafford"),
-         m("ul", [
-           m("li", {class: "fragment"}, "Front-end Engineer at Amazon"),
-           m("li", {class: "fragment"}, "Nicolas Cage enthusiast")
-         ])
-       ]),
-       m("section", [
-         m("h1", "Anyways...")
+         m("h1", "Ways to use the prototype")
        ])
      ]);
-    }
-  },
+   }
+ },
 
- {
+  { // Ways to misuse the prototype
     view: function() {
-     return m("section", {}, [
-       m("section", [
-         m("h1", "What is the Prototype?"),
-         m("ul", [
-           m("li", "Prototypes are essentially \"blueprints.\""),
-           m("li", "Every major type has a prototype")
-         ]),
-         m(codemirror, {code: "this this this"})
-       ]),
-       m("section", [
-         m("h1", "Bradley Stafford"),
-         m("ul", [
-           m("li", {class: "fragment"}, "Front-end Engineer at Amazon"),
-           m("li", {class: "fragment"}, "Nicolas Cage enthusiast")
-         ])
-       ]),
-       m("section", [
-         m("h1", "Anyways...")
-       ])
-     ]);
-    }
-   },
-
-   {
-     view: function() {
-       return m("section", {}, [
-         m("section", [
-           m("h1", "Ways to use the prototype"),
-           m("ul", [
-             m("li", {class: "fragment"}, "inheritance"),
-             m("li", {class: "fragment"}, "method borrowing"),
-             m("li", {class: "fragment"}, "delegation up the prototype chain")
-           ])
-         ]),
-         m("section", [
-           m("h1", "Inheritance"),
-
-         ]),
-         m("section", [
-           m("h1", "Borrowing")
-         ]),
-         m("section", [
-           m("h1", "Delegating")
-         ])
-       ]);
-     }
-   },
-
-   {
-     view: function() {
-       return m("section", {}, [
-         m("section", [
-           m("h1", "Ways to misuse the prototype"),
-           m("ul", [
-             m("li", {class: "fragment"}, "Adding cruft"),
-             m("li", {class: "fragment"}, "Overwriting"),
-           ])
-         ]),
-         m("section", [
-           m("h1", "Adding"),
-
-         ]),
-         m("section", [
-           m("h1", "Overwriting")
-         ])
-       ]);
-     }
-   },
-
-   {
-    view: function() {
-      return m("section", {}, [
+      return m("section", [
         m("section", [
-          m("h1", "Custom/Funsies")
-        ]),
-        m("section", [
-          m("h1", "Constructing new instances"),
-        ]),
-        m("section", [
-          m("h1", "Constructing new prototypes")
+          m("h1", "Ways to MISUSE the prototype")
         ])
       ]);
     }
+  },
+
+  { // Conclusion / Warning?
+   view: function() {
+     return m("section", [
+       m("section", [
+         m("h1", "All in all")
+       ])
+     ]);
+   }
+ },
+
+ { // Conclusion / Warning?
+  view: function() {
+    return m("section", [
+      m("section", [
+        m("h1", "All in all")
+      ])
+    ]);
   }
+ }
 
 
 ]
 
-},{"../cmp/codemirror":10,"mithril":5}],12:[function(require,module,exports){
+},{"../cmp/codemirror":11,"mithril":5}],13:[function(require,module,exports){
 var m = require("mithril");
 
 var component = {
@@ -17210,4 +17236,4 @@ var component = {
 
 module.exports = component;
 
-},{"./deck":11,"mithril":5}]},{},[9]);
+},{"./deck":12,"mithril":5}]},{},[10]);

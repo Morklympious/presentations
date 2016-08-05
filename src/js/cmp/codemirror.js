@@ -1,20 +1,18 @@
 var m = require("mithril"),
-    editor = require("codemirror"),
-    Reveal = require("reveal.js");
+    editor = require("codemirror");
 
 // Extra codemirror packages that need to be bundled.
 require('codemirror/mode/javascript/javascript');
 require("codemirror/addon/edit/matchbrackets");
 require("codemirror/addon/edit/closebrackets");
-//srequire("codemirror/addon/selection/active-line");
-//require("codemirror/addon/comment/continuecomment");
+
 
 var component = {
   controller: function(options) {
     var ctrl = this;
 
-    ctrl.code = (options && options.code) || {};
-
+    ctrl.code = (options && options.code) || undefined;
+    console.log(ctrl.code);
     ctrl.setup = function(element, initialized) {
 
       if(initialized) return;
@@ -22,9 +20,10 @@ var component = {
       ctrl.editor = editor(element, {
         lineNumbers: true,
         lineWrapping: true,
-        theme: "twilight",
-        value: ctrl.code
+        value: 'var self = this' //ctrl.code ? ctrl.code : ''
       });
+
+      console.log('ctrl.editor', ctrl.editor)
 
 
       setInterval(function() {
@@ -33,8 +32,13 @@ var component = {
     }
   },
 
-  view: function(ctrl, options) {
-    return m("div", {config: ctrl.setup});
+  view: function(ctrl) {
+    return m("div", {
+      config: ctrl.setup,
+      ondblclick: function() {
+        eval("(function() {" + ctrl.editor.getValue() + "})()")
+      }
+    });
   }
 }
 

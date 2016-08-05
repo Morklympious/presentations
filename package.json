@@ -20,6 +20,7 @@
   "author": "Bradley Stafford",
   "license": "MIT",
   "devDependencies": {
+    "ace-code-editor": "^1.2.3",
     "browserify": "^13.0.0",
     "codemirror": "^5.17.0",
     "ecstatic": "^1.4.0",

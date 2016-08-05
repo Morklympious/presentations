@@ -1,5 +1,15 @@
 @import "reveal.css";
 
 :global(.reveal .slides) {
-  text-align: left; 
+  text-align: left;
+}
+
+:global(.reveal h1) {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+:global(.reveal h2) {
+  font-size: 2rem;
+  margin: 1rem 0;
 }

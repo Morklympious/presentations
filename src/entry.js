@@ -7,18 +7,19 @@ var m      = require("mithril"),
 // Global CSS output by Browserify via Modular CSS
 require("./css/import-reveal.css");
 require("./css/import-codemirror.css");
+require("./css/global.css");
 
 
 function configure(element, initialized) {
+
    if(initialized) return;
 
    Reveal.initialize({
-     height: 800,
-     width: 1280,
+     height: 600,
+     width: 1200,
      transition: "fade",
+     center: false
    });
 }
 
-m.render(document.body, m("div", {class: "reveal", config: configure }, require("./js/slides.js")));
-
-setInterval(m.redraw, 5000);
+m.render(document.body, m("div", {class: "reveal", config: configure}, require("./js/slides.js")));
