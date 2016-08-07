@@ -12,15 +12,16 @@ var component = {
     var ctrl = this;
 
     ctrl.code = (options && options.code) || undefined;
-    console.log(ctrl.code);
-    ctrl.setup = function(element, initialized) {
 
+    ctrl.setup = function(element, initialized) {
       if(initialized) return;
 
       ctrl.editor = editor(element, {
         lineNumbers: true,
         lineWrapping: true,
-        value: ctrl.code ? ctrl.code : '',
+        minScale: 1,
+        maxScale: 1,
+        value: ctrl.code || '',
         theme: "twilight"
       });
 

@@ -1,7 +1,5 @@
-:global(h1) {
-  margin: 24px 0;
-}
 
-:global(body) {
-  zoom: 0.5;
+
+:global(.CodeMirror) {
+  font-size: 24px;
 }

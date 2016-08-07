@@ -1,9 +1,6 @@
 /* src/css/global.css */
-h1 {
-    margin: 24px 0
-}
-body {
-    zoom: 0.5
+.CodeMirror {
+    font-size: 24px
 }
 /* src/css/import-codemirror.css */
 /* BASICS */
@@ -1783,12 +1780,15 @@ html:-moz-full-screen-ancestor {
 .zoomed .reveal .roll span:after {
     visibility: hidden
 }
+.reveal {
+    font-size: 32px
+}
 .reveal .slides {
     text-align: left
 }
 .reveal h1 {
     font-size: 3rem;
-    margin: 1rem 0
+    margin: 2rem 0
 }
 .reveal h2 {
     font-size: 2rem;

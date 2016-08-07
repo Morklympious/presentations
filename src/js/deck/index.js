@@ -33,14 +33,31 @@ module.exports = [
   {
     view: function() {
      return m("section", {}, [
+      m("h1", "Before we talk about Prototypes"),
+      m("h2", "Let's get some things straight"),
+      m("ul", [
+        m("li", "Everything is effectively an object in javascript"),
+        m("li", "No, not EVERYTHING, but yes, everything."),
+        m("li", "Objects? Duh."),
+        m("li", "Arrays? Absolutely"),
+        m("li", "Strings, Booleans, Numbers? Mostly.")
+      ])
+     ]);
+    }
+  },
+
+  {
+    view: function() {
+     return m("section", {}, [
       m("h1", "Let's talk about Prototypes"),
       m("h2", "What is a prototype?"),
       m("ul", [
-        m("li", "A prototype is the construct in javascript that allows inheritance and reusability in your code"),
-        m("li", "It also enables the basic, free functionality of the major types")
+        m("li", "Object allowing inheritance and reusability"),
+        m("li", "gives basic, free functionality of the major types"),
+        m("li", "Each type has its respective prototype + object")
       ]),
       m("h2", "If you come from an OO background..."),
-      m("p", "...you can think of the prototype as the base class that instances inherit from")
+      m("code", "class Object extends Object.prototype")
      ]);
     }
   },
@@ -49,8 +66,7 @@ module.exports = [
     view: function() {
      return m("section", {}, [
        m("h1", "Talking about code sucks."),
-       m("p", "So let's code about it."),
-       m(code, {code: 'var self = this, doot = "foot"'})
+       m(code, {code: "var obj = {one: 'nicolas', two: 'cage'};"})
      ]);
    },
 
@@ -91,7 +107,7 @@ module.exports = [
     return m("section", {}, [
       m("h1", "Talking about code sucks. (Pt. II)"),
       m("p", "The Reckoning."),
-      m(code)
+      m(code, {code: "Object.prototype.toBradley = function() { return 'Brangley Standfrand'; } "})
     ]);
    }
   },

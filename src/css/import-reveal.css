@@ -1,12 +1,16 @@
 @import "reveal.css";
 
+:global(.reveal) {
+  font-size: 32px;
+}
+
 :global(.reveal .slides) {
   text-align: left;
 }
 
 :global(.reveal h1) {
   font-size: 3rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 :global(.reveal h2) {
