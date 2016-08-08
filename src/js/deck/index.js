@@ -57,7 +57,7 @@ module.exports = [
         m("li", "Each type has its respective prototype + object")
       ]),
       m("h2", "If you come from an OO background..."),
-      m("code", "class Object extends Object.prototype")
+      m("code", "Class Object extends Object.prototype")
      ]);
     }
   },
@@ -94,8 +94,8 @@ module.exports = [
          m("ul", [
            m("li", "It's some kind of... chain"),
            m("li", "for prototypes"),
-           m("li", "like a happy trail of weird looking objects"),
-           m("li", "or a trail of tears if you don't like javascript"),
+           m("li", "happy trail of weird looking objects"),
+           m("li", "trail of tears if you don't like javascript"),
          ])
        ])
      ]);
@@ -107,7 +107,7 @@ module.exports = [
     return m("section", {}, [
       m("h1", "Talking about code sucks. (Pt. II)"),
       m("p", "The Reckoning."),
-      m(code, {code: "Object.prototype.toBradley = function() { return 'Brangley Standfrand'; } "})
+      m(code, {code: require("../examples/toBradley-example") })
     ]);
    }
   },
@@ -116,17 +116,35 @@ module.exports = [
     view: function() {
       return m("section", [
         m("section", [
-          m("h1", "Another example"),
-          m(code)
+          m("h1", "It's not just basic types"),
+          m("ul", [
+            m("li", "Creating a custom object can have a prototype"),
+            m("li", "more ideal than a million member properties"),
+            m("li", "persistent data"),
+            m("li", "easily overridden")
+          ])
         ]),
         m("section", [
-          m("h1", "Accessing stuff"),
-          m("ul", [
-            m("li", "Is the stuff I'm trying to access on the current object?"),
-            m("li", "If not, is there a prototype I can look at or whatever?"),
-            m("li", "No? Oh. Sorry dude, it doesn't exist."),
-            m("li", "Snake up the prototype chain and look for the property you need.")
-          ])
+          m("h1", "inside the Cage"),
+          m(code, {code: require("../examples/nicolas-cage-example")})
+        ])
+      ]);
+    }
+  },
+
+  { // Example with object get/set for overview
+    view: function() {
+      return m("section", [
+        m("section", [
+          m("h1", "Prototype delegation"),
+          m("h2", "Makes for performant javascript"),
+          m("ol", [
+            m("li", "Is the stuff I'm trying to access on the current object/structure?"),
+            m("li", "If not, is there a prototype I can look at?"),
+            m("li", "If yes, look at that object and see if it's there"),
+            m("li", "If not, return to step 2")
+          ]),
+          
         ])
       ]);
     }
@@ -136,7 +154,12 @@ module.exports = [
    view: function() {
      return m("section", [
        m("section", [
-         m("h1", "Ways to use the prototype")
+         m("h1", "Ways to use Prototypes"),
+         m("ul", [
+           m("li", "Inheritance"),
+           m("li", "Method borrowing"),
+           m("li", "Delegation")
+         ])
        ])
      ]);
    }
@@ -146,7 +169,30 @@ module.exports = [
     view: function() {
       return m("section", [
         m("section", [
-          m("h1", "Ways to MISUSE the prototype")
+          m("h1", "Ways to MISUSE Prototypes"),
+          m("ul", [
+            m("li", "Adding a bunch of crap to the Prototype"),
+            m("li", "Completely stomping the Prototype"),
+            m("li", "Binding")
+          ])
+        ])
+      ]);
+    }
+  },
+
+  { // Ways to misuse the prototype
+    view: function() {
+      return m("section", [
+        m("section", [
+          m("h1", "Funsies"),
+        ]),
+        m("section", [
+          m("h1", "Constructor Pattern"),
+          m(code)
+        ]),
+        m("section", [
+          m("h1", "Object.create()"),
+          m(code)
         ])
       ]);
     }
@@ -156,7 +202,15 @@ module.exports = [
    view: function() {
      return m("section", [
        m("section", [
-         m("h1", "All in all")
+         m("h1", "Some takeaways (AKA praise the sun he's almost finished)"),
+         m("ul", [
+           m("li", "Prototypes are powerful"),
+           m("li", "Prototypes are useful"),
+           m("li", "custom prototypes are dynamically interpreted"),
+           m("li", "extending an existing Prototype gives functionality to all instances"),
+           m("li", "creating a new Prototype gives you full flexibility"),
+           m("li", "hats")
+         ])
        ])
      ]);
    }
