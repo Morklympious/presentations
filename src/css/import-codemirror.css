@@ -1,1 +1,6 @@
 @import "codemirror.css";
+
+:global(.CodeMirror) {
+  height: 500px;
+  font-size: 20px;
+}

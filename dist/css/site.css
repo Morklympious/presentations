@@ -425,6 +425,10 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext {
     background: none
 }
+.CodeMirror {
+    height: 500px;
+    font-size: 20px
+}
 /* src/css/import-reveal.css */
 /*!
  * reveal.js

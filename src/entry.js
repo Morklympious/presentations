@@ -15,7 +15,7 @@ function configure(element, initialized) {
    if(initialized) return;
 
    Reveal.initialize({
-     height: 600,
+     height: 768,
      width: 1200,
      minScale: 1,
      maxScale: 1,

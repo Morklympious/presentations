@@ -32,12 +32,19 @@ var component = {
   },
 
   view: function(ctrl) {
-    return m("div", {
-      config: ctrl.setup,
-      ondblclick: function() {
-        eval("(function() {" + ctrl.editor.getValue() + "})()")
-      }
-    });
+    return m("div", [
+      m("div", {
+        config: ctrl.setup,
+        ondblclick: function() {
+          
+        }
+      }),
+      m("button", {
+        onclick: function() {
+          eval("(function() {" + ctrl.editor.getValue() + "})()")
+        } 
+      }, "Run Code")
+    ])
   }
 }
 

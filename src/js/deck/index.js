@@ -33,22 +33,6 @@ module.exports = [
   {
     view: function() {
      return m("section", {}, [
-      m("h1", "Before we talk about Prototypes"),
-      m("h2", "Let's get some things straight"),
-      m("ul", [
-        m("li", "Everything is effectively an object in javascript"),
-        m("li", "No, not EVERYTHING, but yes, everything."),
-        m("li", "Objects? Duh."),
-        m("li", "Arrays? Absolutely"),
-        m("li", "Strings, Booleans, Numbers? Mostly.")
-      ])
-     ]);
-    }
-  },
-
-  {
-    view: function() {
-     return m("section", {}, [
       m("h1", "Let's talk about Prototypes"),
       m("h2", "What is a prototype?"),
       m("ul", [
@@ -66,7 +50,7 @@ module.exports = [
     view: function() {
      return m("section", {}, [
        m("h1", "Talking about code sucks."),
-       m(code, {code: "var obj = {one: 'nicolas', two: 'cage'};"})
+       m(code, {code: require("../examples/first-prototype-example")})
      ]);
    },
 
@@ -75,28 +59,14 @@ module.exports = [
   { // After demonstrating the object using a property not immediate to itself.
    view: function() {
      return m("section", {}, [
-       m("h1", "What the hell was that?"),
-       m("h2", "Wow Brad what is this third grade?"),
+       m("h1", "Why does this work?"),
+       m("h2", "Asking for a friend"),
        m("ul", [
-         m("li", "We used the object's prototype to gain access to a method"),
-         m("li", "Prototypes are cool because they're a single point of contact across types"),
-         m("li", "This was all possible thanks to the prototype chain!")
-       ])
-     ]);
-   }
-  },
-
-  { // Explain the Prototype Chain
-   view: function() {
-     return m("section", [
-       m("section", [
-         m("h1", "The Prototype Chain"),
-         m("ul", [
-           m("li", "It's some kind of... chain"),
-           m("li", "for prototypes"),
-           m("li", "happy trail of weird looking objects"),
-           m("li", "trail of tears if you don't like javascript"),
-         ])
+         m("li", "The Prototype chain"),
+         m("li", "A singly-linked linked-list"),
+         m("li", "Each with member properties"),
+         m("li", "Properties are immediately accessible to all objects of that type."),
+         m("li", "Each type in javascript has access to its prototype chain")
        ])
      ]);
    }
@@ -106,64 +76,75 @@ module.exports = [
    view: function() {
     return m("section", {}, [
       m("h1", "Talking about code sucks. (Pt. II)"),
-      m("p", "The Reckoning."),
-      m(code, {code: require("../examples/toBradley-example") })
+      m(code, {code: require("../examples/prototype-chain-example") })
     ]);
    }
   },
 
-  { // Example with object get/set for overview
+  {
     view: function() {
       return m("section", [
         m("section", [
           m("h1", "It's not just basic types"),
           m("ul", [
-            m("li", "Creating a custom object can have a prototype"),
+            m("li", "Custom objects can have a prototype"),
             m("li", "more ideal than a million member properties"),
             m("li", "persistent data"),
-            m("li", "easily overridden")
+            m("li", "easy to override for use-cases")
           ])
         ]),
         m("section", [
-          m("h1", "inside the Cage"),
+          m("h1", "Inside the Cage"),
           m(code, {code: require("../examples/nicolas-cage-example")})
         ])
       ]);
     }
   },
 
-  { // Example with object get/set for overview
+  {
     view: function() {
       return m("section", [
         m("section", [
-          m("h1", "Prototype delegation"),
-          m("h2", "Makes for performant javascript"),
+          m("h1", "Prototype delegation checklist"),
+          m("h2", "For the modern dingus (like the dude that's talking)"),
+          m("p", "...He totally wrote that"),
           m("ol", [
             m("li", "Is the stuff I'm trying to access on the current object/structure?"),
             m("li", "If not, is there a prototype I can look at?"),
             m("li", "If yes, look at that object and see if it's there"),
             m("li", "If not, return to step 2")
           ]),
-          
         ])
       ]);
     }
   },
 
   { // Ways to use the prototype
-   view: function() {
-     return m("section", [
-       m("section", [
-         m("h1", "Ways to use Prototypes"),
-         m("ul", [
-           m("li", "Inheritance"),
-           m("li", "Method borrowing"),
-           m("li", "Delegation")
-         ])
-       ])
-     ]);
-   }
- },
+  view: function() {
+      return m("section", [
+        m("section", [
+          m("h1", "Ways to use Prototypes"),
+          m("ul", [
+            m("li", "Delegation"),
+            m("li", "Inheritance"),
+            m("li", "Method borrowing"),
+          ])
+        ]),
+        m("section", [
+          m("h1", "Delegation"),
+          m(code)
+        ]),        
+        m("section", [
+          m("h1", "Inheritance"),
+          m(code)
+        ]),
+        m("section", [
+          m("h1", "Method Borrowing"),
+          m(code)
+        ])
+      ]);
+    }
+  },
 
   { // Ways to misuse the prototype
     view: function() {
@@ -171,28 +152,28 @@ module.exports = [
         m("section", [
           m("h1", "Ways to MISUSE Prototypes"),
           m("ul", [
-            m("li", "Adding a bunch of crap to the Prototype"),
-            m("li", "Completely stomping the Prototype"),
-            m("li", "Binding")
+            m("li", "This is like a blank check"),
+            m("li", "full of different, shiny guns"),
+            m("li", "...to shoot yourself in the foot")
           ])
         ])
       ]);
     }
   },
 
-  { // Ways to misuse the prototype
+  {
     view: function() {
       return m("section", [
         m("section", [
-          m("h1", "Funsies"),
+          m("h1", "Funsies, not footguns"),
         ]),
         m("section", [
           m("h1", "Constructor Pattern"),
-          m(code)
+          m(code, {code: require("../examples/constructor-pattern-example")})
         ]),
         m("section", [
           m("h1", "Object.create()"),
-          m(code)
+          m(code, {code: require("../examples/object-create-example")})
         ])
       ]);
     }
@@ -202,14 +183,15 @@ module.exports = [
    view: function() {
      return m("section", [
        m("section", [
-         m("h1", "Some takeaways (AKA praise the sun he's almost finished)"),
+         m("h1", "Some takeaways"),
+         m("h2", "AKA praise the sun he's almost finished"),
          m("ul", [
            m("li", "Prototypes are powerful"),
            m("li", "Prototypes are useful"),
-           m("li", "custom prototypes are dynamically interpreted"),
-           m("li", "extending an existing Prototype gives functionality to all instances"),
-           m("li", "creating a new Prototype gives you full flexibility"),
-           m("li", "hats")
+           m("li", "Constructor pattern -> runtime prototype creation"),
+           m("li", "Object.create -> compile-time prototype creation"),
+           m("li", "Prototypes can be extensible, flexible, useful"),
+           m("li", "All of these eyes on me burn")
          ])
        ])
      ]);
@@ -220,7 +202,7 @@ module.exports = [
   view: function() {
     return m("section", [
       m("section", [
-        m("h1", "Thanks!")
+        m("h1", "Thanks for your time!")
       ])
     ]);
   }
