@@ -5,6 +5,6 @@ module.exports = [
   "}",
   "",
   "// Both of these objects can delegate 'toBradley()' to the prototype",
-  "var obj = {},",
-  "    objTwo = new Object();"
+  "var one = {},",
+  "    two = new Object();"
 ].join("\n")

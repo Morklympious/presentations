@@ -9,5 +9,6 @@ module.exports = [
   "nicolas.films // => ['National Treasure', 'Wicker man', 'Drive Angry']",
   "nicolas.brilliant // => true",
   "",
-  "// What about another property?"
+  "// What about another property?",
+  "alert()"
 ].join("\n")

@@ -4,9 +4,9 @@
 
 .padded-cage {
   composes: cage;
-  padding-left: 44px;
+  padding-left: 8%;
 }
 
 .gif {
-  width: 80%;
+  width: 70%;
 }

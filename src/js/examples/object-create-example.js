@@ -7,5 +7,8 @@ module.exports = [
   "",
   "// three is an object with an Object prototype and properties defined locally",
   "var three = Object.create(new Object(), { local: 'to this object' })", 
+  "",
+  "// Should've spent more time finding a better console.log solution...",
+  "alert(\"YOU CANNOT CAGE CAGE\")",
   ""
 ].join("\n")

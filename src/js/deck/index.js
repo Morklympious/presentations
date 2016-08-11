@@ -15,7 +15,7 @@ module.exports = [
         ]),
         m("section", [
           m("h1", "The Prototype"),
-          m("h2", "Who is this strange man and why is he here to tell me what I already know?"),
+          m("h2", "Who is this man and why is he here to tell me what I already know?"),
           m("img", {src: "dist/img/intro-cage-2.gif", class: css.gif})
         ]),
         m("section", [
@@ -53,13 +53,13 @@ module.exports = [
       m("h2", "What is a prototype?"),
       m("ul", [
         m("li", fragment, "Object allowing inheritance and reusability"),
-        m("li", fragment, "gives basic, free functionality of the major types"),
+        m("li", fragment, "Gives basic, free functionality of the major types"),
         m("li", fragment, "Each type has its respective prototype + object"),
         m("li", fragment, "\"Everything in javscript is an object\" (even Functions!)")
       ]),
       m("h2", fragment, "If you come from an OO background..."),
       m("ul", [
-        m("li", fragment, m("code", "Class Type extends Type.prototype"))
+        m("li", fragment, m("code", "Class Type extends TypePrototype"))
       ])
      ]);
     }
@@ -84,8 +84,8 @@ module.exports = [
          m("li", fragment, "The Prototype chain"),
          m("li", fragment, "A singly-linked linked-list"),
          m("li", fragment, "Each with member properties"),
-         m("li", fragment, "Properties are immediately accessible to all objects of that type."),
-         m("li", fragment, "Each type in javascript has access to its prototype chain")
+         m("li", fragment, "Each type in javascript has access to its prototype chain"),
+         m("li", fragment, "Properties are immediately accessible to all objects of that type.")
        ])
      ]);
    }
@@ -104,16 +104,16 @@ module.exports = [
     view: function() {
       return m("section", [
         m("section", [
-          m("h1", "It's not just basic types"),
+          m("h1", "Prototypes unltd."),
           m("ul", [
             m("li", fragment, "Custom objects can have a prototype"),
-            m("li", fragment, "more ideal than a million member properties"),
-            m("li", fragment, "persistent data"),
-            m("li", fragment, "easy to override for use-cases")
+            m("li", fragment, "Delegation is ideal for constant member props"),
+            m("li", fragment, "Persistent data"),
+            m("li", fragment, "Easy to override for use-cases")
           ])
         ]),
         m("section", [
-          m("h1", "Inside the Cage"),
+          m("h1", {class: css["padded-cage"]}, "Inside the Cage"),
           m(code, {code: require("../examples/nicolas-cage-example")})
         ])
       ]);
@@ -125,8 +125,8 @@ module.exports = [
       return m("section", [
         m("section", [
           m("h1", "Prototype delegation checklist"),
-          m("h2", fragment, "For the modern dingus (like the dude that's talking)"),
-          m("p", fragment, "...He totally wrote that"),
+          m("h2", fragment, "For the modern dingus (like myself)"),
+          m("p", fragment, "Yes, I'm THAT TERRIBLE."),
           m("ol", [
             m("li", fragment, "Is the stuff I'm trying to access on the current object/structure?"),
             m("li", fragment, "If not, is there a prototype I can look at?"),
@@ -185,6 +185,8 @@ module.exports = [
       return m("section", [
         m("section", [
           m("h1", "Funsies, not footguns"),
+          m("h2", "Tools for make you understand many better for great good"),
+          m("p", "Different tools to achieve the same thing")
         ]),
         m("section", [
           m("h1", "Constructor Pattern"),
@@ -233,9 +235,7 @@ module.exports = [
           m("li", fragment, "Follow"),
           m("li", fragment, "Please don't follow me irl though."),
           m("li", fragment, "That's probably too creepy.")
-        ]),
-        
-        
+        ]), 
       ])
     ]);
   }
