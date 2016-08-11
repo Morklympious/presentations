@@ -17082,7 +17082,8 @@ module.exports = component;
 },{"./codemirror.css":11,"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5}],13:[function(require,module,exports){
 module.exports = {
     "cage": "mcfa399204_cage",
-    "padded-cage": "mcfa399204_cage mcfa399204_padded-cage"
+    "padded-cage": "mcfa399204_cage mcfa399204_padded-cage",
+    "gif": "mcfa399204_gif"
 };
 },{}],14:[function(require,module,exports){
 var  m     = require("mithril"),
@@ -17097,15 +17098,18 @@ module.exports = [
       return m("section", {}, [
         m("section", [
           m("h1", "The Prototype"),
-          m("h2", "What is even happening right now?")
+          m("h2", "What is even happening right now?"),
+          m("img", {src: "dist/img/intro-cage.gif", class: css.gif})
         ]),
         m("section", [
           m("h1", "The Prototype"),
-          m("h2", "Who is this strange man and why is he here to tell me what I already know?")
+          m("h2", "Who is this strange man and why is he here to tell me what I already know?"),
+          m("img", {src: "dist/img/intro-cage-2.gif", class: css.gif})
         ]),
         m("section", [
           m("h1", "The Prototype"),
-          m("h2", "Somebody told me there was a Charizard in here and now I'm stuck in this office with you nerds.")
+          m("h2", "Somebody told me there was a Charizard in here and now I'm stuck in this office with you nerds."),
+          m("img", {src: "dist/img/intro-cage-3.gif", class: css.gif})
         ])
          
       ]);
@@ -17305,7 +17309,21 @@ module.exports = [
   view: function() {
     return m("section", [
       m("section", [
-        m("h1", "Thanks for your time!")
+        m("h1", "Thanks for your time!"),
+        m("h2", "Somebody get this man out of here"),
+        m("ul", [
+          m("li", fragment, "Twitter: @Bradleystafford"),
+          m("li", fragment, "Github: Morklympious"),
+          m("li", fragment, "Blog: https://morklympious.github.io"),
+          m("li", fragment, "Like"),
+          m("li", fragment, "Comment"),
+          m("li", fragment, "Subscribe"),
+          m("li", fragment, "Follow"),
+          m("li", fragment, "Please don't follow me irl though."),
+          m("li", fragment, "That's probably too creepy.")
+        ]),
+        
+        
       ])
     ]);
   }

@@ -6,3 +6,7 @@
   composes: cage;
   padding-left: 44px;
 }
+
+.gif {
+  width: 80%;
+}
