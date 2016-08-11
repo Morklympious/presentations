@@ -17020,7 +17020,7 @@ function configure(element, initialized) {
 
 m.render(document.body, m("div", {class: "reveal", config: configure}, require("./js/slides.js")));
 
-},{"./css/global.css":7,"./css/import-codemirror.css":8,"./css/import-reveal.css":9,"./js/slides.js":18,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
+},{"./css/global.css":7,"./css/import-codemirror.css":8,"./css/import-reveal.css":9,"./js/slides.js":21,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
 var m = require("mithril"),
     editor = require("codemirror");
 
@@ -17075,7 +17075,8 @@ module.exports = component;
 
 },{"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5}],12:[function(require,module,exports){
 var  m = require("mithril"),
-  code = require("../cmp/codemirror");
+  code = require("../cmp/codemirror"),
+  fragment = {class: "fragment"};
 
 
 module.exports = [
@@ -17094,12 +17095,12 @@ module.exports = [
         m("section",   [
           m("h1", "Who am I?"),
           m("ul", [
-            m("li", "Bradley Stafford"),
-            m("li", "Front-end Engineer @ Amazon (AUI Team)"),
-            m("li", "Code Jester"),
-            m("li", "Nicolas Cage enthusiast"),
-            m("li", "Non-sequitur list creator"),
-            m("li", "Hats")
+            m("li", fragment, "Bradley Stafford"),
+            m("li", fragment, "Front-end Engineer @ Amazon (AUI Team)"),
+            m("li", fragment, "Code Jester"),
+            m("li", fragment, "Nicolas Cage enthusiast"),
+            m("li", fragment, "Non-sequitur list creator"),
+            m("li", fragment, "Hats")
           ])
         ]),
       ]);
@@ -17112,12 +17113,14 @@ module.exports = [
       m("h1", "Let's talk about Prototypes"),
       m("h2", "What is a prototype?"),
       m("ul", [
-        m("li", "Object allowing inheritance and reusability"),
-        m("li", "gives basic, free functionality of the major types"),
-        m("li", "Each type has its respective prototype + object")
+        m("li", fragment, "Object allowing inheritance and reusability"),
+        m("li", fragment, "gives basic, free functionality of the major types"),
+        m("li", fragment, "Each type has its respective prototype + object")
       ]),
-      m("h2", "If you come from an OO background..."),
-      m("code", "Class Object extends Object.prototype")
+      m("h2", fragment, "If you come from an OO background..."),
+      m("ul", [
+        m("li", fragment, m("code", "Class Object extends Object.prototype"))
+      ])
      ]);
     }
   },
@@ -17138,11 +17141,11 @@ module.exports = [
        m("h1", "Why does this work?"),
        m("h2", "Asking for a friend"),
        m("ul", [
-         m("li", "The Prototype chain"),
-         m("li", "A singly-linked linked-list"),
-         m("li", "Each with member properties"),
-         m("li", "Properties are immediately accessible to all objects of that type."),
-         m("li", "Each type in javascript has access to its prototype chain")
+         m("li", fragment, "The Prototype chain"),
+         m("li", fragment, "A singly-linked linked-list"),
+         m("li", fragment, "Each with member properties"),
+         m("li", fragment, "Properties are immediately accessible to all objects of that type."),
+         m("li", fragment, "Each type in javascript has access to its prototype chain")
        ])
      ]);
    }
@@ -17163,10 +17166,10 @@ module.exports = [
         m("section", [
           m("h1", "It's not just basic types"),
           m("ul", [
-            m("li", "Custom objects can have a prototype"),
-            m("li", "more ideal than a million member properties"),
-            m("li", "persistent data"),
-            m("li", "easy to override for use-cases")
+            m("li", fragment, "Custom objects can have a prototype"),
+            m("li", fragment, "more ideal than a million member properties"),
+            m("li", fragment, "persistent data"),
+            m("li", fragment, "easy to override for use-cases")
           ])
         ]),
         m("section", [
@@ -17182,13 +17185,13 @@ module.exports = [
       return m("section", [
         m("section", [
           m("h1", "Prototype delegation checklist"),
-          m("h2", "For the modern dingus (like the dude that's talking)"),
-          m("p", "...He totally wrote that"),
+          m("h2", fragment, "For the modern dingus (like the dude that's talking)"),
+          m("p", fragment, "...He totally wrote that"),
           m("ol", [
-            m("li", "Is the stuff I'm trying to access on the current object/structure?"),
-            m("li", "If not, is there a prototype I can look at?"),
-            m("li", "If yes, look at that object and see if it's there"),
-            m("li", "If not, return to step 2")
+            m("li", fragment, "Is the stuff I'm trying to access on the current object/structure?"),
+            m("li", fragment, "If not, is there a prototype I can look at?"),
+            m("li", fragment, "If yes, look at that object and see if it's there"),
+            m("li", fragment, "If not, return to step 2")
           ]),
         ])
       ]);
@@ -17201,22 +17204,22 @@ module.exports = [
         m("section", [
           m("h1", "Ways to use Prototypes"),
           m("ul", [
-            m("li", "Delegation"),
-            m("li", "Inheritance"),
-            m("li", "Method borrowing"),
+            m("li", fragment, "Delegation"),
+            m("li", fragment, "Inheritance"),
+            m("li", fragment, "Method borrowing"),
           ])
         ]),
         m("section", [
           m("h1", "Delegation"),
-          m(code)
+          m(code, {code: require("../examples/delegation-example")})
         ]),        
         m("section", [
           m("h1", "Inheritance"),
-          m(code)
+          m(code, {code: require("../examples/inheritance-example")})
         ]),
         m("section", [
           m("h1", "Method Borrowing"),
-          m(code)
+          m(code, {code: require("../examples/borrowing-example")})
         ])
       ]);
     }
@@ -17260,14 +17263,14 @@ module.exports = [
      return m("section", [
        m("section", [
          m("h1", "Some takeaways"),
-         m("h2", "AKA praise the sun he's almost finished"),
+         m("h2", fragment, "AKA praise the sun he's almost finished"),
          m("ul", [
-           m("li", "Prototypes are powerful"),
-           m("li", "Prototypes are useful"),
-           m("li", "Constructor pattern -> runtime prototype creation"),
-           m("li", "Object.create -> compile-time prototype creation"),
-           m("li", "Prototypes can be extensible, flexible, useful"),
-           m("li", "All of these eyes on me burn")
+           m("li", fragment, "Prototypes are powerful"),
+           m("li", fragment, "Prototypes are useful"),
+           m("li", fragment, "Constructor pattern -> runtime prototype creation"),
+           m("li", fragment, "Object.create -> compile-time prototype creation"),
+           m("li", fragment, "Prototypes can be extensible, flexible, useful"),
+           m("li", fragment, "All of these eyes on me burn")
          ])
        ])
      ]);
@@ -17287,7 +17290,23 @@ module.exports = [
 
 ]
 
-},{"../cmp/codemirror":11,"../examples/constructor-pattern-example":13,"../examples/first-prototype-example":14,"../examples/nicolas-cage-example":15,"../examples/object-create-example":16,"../examples/prototype-chain-example":17,"mithril":5}],13:[function(require,module,exports){
+},{"../cmp/codemirror":11,"../examples/borrowing-example":13,"../examples/constructor-pattern-example":14,"../examples/delegation-example":15,"../examples/first-prototype-example":16,"../examples/inheritance-example":17,"../examples/nicolas-cage-example":18,"../examples/object-create-example":19,"../examples/prototype-chain-example":20,"mithril":5}],13:[function(require,module,exports){
+module.exports = [
+  "",
+  "function memoize(fn) {",
+  "  var cache = {}",
+  "",
+  "  // HELLO ARRAY YES PLEASE I NEED THIS THANK YOU",
+  "  var args = Array.prototype.slice.call(arguments, 1)",
+  "",
+  "  return function() { ",
+  "    var key = JSON.stringify(arguments)",
+  "",
+  "    return cache[key] ? cache[key] : fn.apply(null, args.concat.arguments)",
+  "  }",
+  "}"
+].join("\n")
+},{}],14:[function(require,module,exports){
 module.exports = [
   "",
   "function LiterallyTrash() {",
@@ -17299,7 +17318,9 @@ module.exports = [
   "", 
   ""
 ].join("\n")
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],16:[function(require,module,exports){
 module.exports = [
   "var obj = { ",
   "  films: ['National Treasure', 'Wicker man', 'Drive Angry'],",
@@ -17313,7 +17334,28 @@ module.exports = [
   "",
   "// What about an unseen property?"
 ].join("\n")
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
+module.exports = [
+  "var hero = {",
+  "  hp: 200,",
+  "  shields: null,",
+  "  ultimate: null",
+  "}",
+  "",
+  "function Zenyatta() {",
+  "  this.name = 'Zenyatta';",
+  "  this.hp = 50;",
+  "  this.shields = 150",
+  "  this.ultimate = new Ultimate('transcendance', { /*...*/ });",
+  "}",
+  "",
+  "Zenyatta.prototype = hero;",
+  "", 
+  "var z = new Zenyatta();",
+  "",
+  "",
+].join("\n")
+},{}],18:[function(require,module,exports){
 module.exports = [
   "// Constructor with properties on itself",
   "function NicolasCage() {",
@@ -17328,7 +17370,7 @@ module.exports = [
   "var hero = new NicolasCage();",
   ""
 ].join("\n")
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = [
   "// Plain 'ol javascript object",
   "var one = Object.create(null),",
@@ -17340,7 +17382,7 @@ module.exports = [
   "var three = Object.create(new Object(), { local: 'to this object' })", 
   ""
 ].join("\n")
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = [
   "// The Prototype Chain in action",
   "Object.prototype.toBradley = function() {",
@@ -17351,7 +17393,7 @@ module.exports = [
   "var obj = {},",
   "    objTwo = new Object();"
 ].join("\n")
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var m = require("mithril");
 
 var component = {

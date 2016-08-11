@@ -11,5 +11,5 @@ module.exports = [
   "",
   "    return cache[key] ? cache[key] : fn.apply(null, args.concat.arguments)",
   "  }",
-  "}",
+  "}"
 ].join("\n")
