@@ -1,0 +1,8 @@
+.cage {
+  background: url("../img/cage-icon.svg") left center no-repeat;
+}
+
+.padded-cage {
+  composes: cage;
+  padding-left: 44px;
+}

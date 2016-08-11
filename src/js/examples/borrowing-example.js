@@ -1,5 +1,4 @@
 module.exports = [
-  "",
   "function memoize(fn) {",
   "  var cache = {}",
   "",

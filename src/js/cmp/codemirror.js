@@ -1,5 +1,6 @@
-var m = require("mithril"),
-    editor = require("codemirror");
+var m      = require("mithril"),
+    editor = require("codemirror"),
+    css    = require('./codemirror.css');
 
 // Extra codemirror packages that need to be bundled.
 require('codemirror/mode/javascript/javascript');
@@ -40,6 +41,7 @@ var component = {
         }
       }),
       m("button", {
+        class: css.button,
         onclick: function() {
           eval("(function() {" + ctrl.editor.getValue() + "})()")
         } 

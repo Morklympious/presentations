@@ -1,14 +1,26 @@
-var  m = require("mithril"),
-  code = require("../cmp/codemirror"),
-  fragment = {class: "fragment"};
+var  m     = require("mithril"),
+  code     = require("../cmp/codemirror"),
+  fragment = {class: "fragment"},
+  css      = require("./index.css");
 
 
 module.exports = [
   {
     view: function() {
       return m("section", {}, [
+        m("section", [
           m("h1", "The Prototype"),
           m("h2", "What is even happening right now?")
+        ]),
+        m("section", [
+          m("h1", "The Prototype"),
+          m("h2", "Who is this strange man and why is he here to tell me what I already know?")
+        ]),
+        m("section", [
+          m("h1", "The Prototype"),
+          m("h2", "Somebody told me there was a Charizard in here and now I'm stuck in this office with you nerds.")
+        ])
+         
       ]);
     }
   },
@@ -22,7 +34,7 @@ module.exports = [
             m("li", fragment, "Bradley Stafford"),
             m("li", fragment, "Front-end Engineer @ Amazon (AUI Team)"),
             m("li", fragment, "Code Jester"),
-            m("li", fragment, "Nicolas Cage enthusiast"),
+            m("li", {class: "fragment " + css["padded-cage"]}, "Nicolas Cage enthusiast"),
             m("li", fragment, "Non-sequitur list creator"),
             m("li", fragment, "Hats")
           ])
@@ -39,11 +51,12 @@ module.exports = [
       m("ul", [
         m("li", fragment, "Object allowing inheritance and reusability"),
         m("li", fragment, "gives basic, free functionality of the major types"),
-        m("li", fragment, "Each type has its respective prototype + object")
+        m("li", fragment, "Each type has its respective prototype + object"),
+        m("li", fragment, "\"Everything in javscript is an object\" (even Functions!)")
       ]),
       m("h2", fragment, "If you come from an OO background..."),
       m("ul", [
-        m("li", fragment, m("code", "Class Object extends Object.prototype"))
+        m("li", fragment, m("code", "Class Type extends Type.prototype"))
       ])
      ]);
     }
@@ -63,7 +76,7 @@ module.exports = [
    view: function() {
      return m("section", {}, [
        m("h1", "Why does this work?"),
-       m("h2", "Asking for a friend"),
+       m("h2", fragment, "Asking for a friend"),
        m("ul", [
          m("li", fragment, "The Prototype chain"),
          m("li", fragment, "A singly-linked linked-list"),
@@ -78,7 +91,7 @@ module.exports = [
   { // Object with toBradley Example
    view: function() {
     return m("section", {}, [
-      m("h1", "Talking about code sucks. (Pt. II)"),
+      m("h1", "Talking about code sucks. (Pt. II -- The reckoning)"),
       m(code, {code: require("../examples/prototype-chain-example") })
     ]);
    }
@@ -155,9 +168,9 @@ module.exports = [
         m("section", [
           m("h1", "Ways to MISUSE Prototypes"),
           m("ul", [
-            m("li", "This is like a blank check"),
-            m("li", "full of different, shiny guns"),
-            m("li", "...to shoot yourself in the foot")
+            m("li", fragment, "This is like a blank check"),
+            m("li", fragment, "full of different, shiny guns"),
+            m("li", fragment, "...to shoot yourself in the foot")
           ])
         ])
       ]);

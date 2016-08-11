@@ -2,6 +2,8 @@
 
 :global(.reveal) {
   font-size: 32px;
+  font-family: Quicksand, sans-serif;
+  font-weight: bold; 
 }
 
 :global(.reveal .slides) {
@@ -9,11 +11,19 @@
 }
 
 :global(.reveal h1) {
-  font-size: 3rem;
-  margin: 2rem 0;
+  font-size: 4rem;
+  font-weight: bold;
+  border-bottom: 4px solid; 
 }
 
 :global(.reveal h2) {
   font-size: 2rem;
+  font-weight: bold;
   margin: 1rem 0;
 }
+
+:global(.reveal ul) {
+  margin: 0;
+}
+
+

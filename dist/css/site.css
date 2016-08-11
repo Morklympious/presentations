@@ -427,7 +427,8 @@ span.CodeMirror-selectedtext {
 }
 .CodeMirror {
     height: 500px;
-    font-size: 20px
+    font-size: 20px;
+    font-weight: normal
 }
 /* src/css/import-reveal.css */
 /*!
@@ -1785,16 +1786,41 @@ html:-moz-full-screen-ancestor {
     visibility: hidden
 }
 .reveal {
-    font-size: 32px
+    font-size: 32px;
+    font-family: Quicksand, sans-serif;
+    font-weight: bold
 }
 .reveal .slides {
     text-align: left
 }
 .reveal h1 {
-    font-size: 3rem;
-    margin: 2rem 0
+    font-size: 4rem;
+    font-weight: bold;
+    border-bottom: 4px solid
 }
 .reveal h2 {
     font-size: 2rem;
+    font-weight: bold;
     margin: 1rem 0
+}
+.reveal ul {
+    margin: 0
+}
+/* src/js/cmp/codemirror.css */
+.mce898b65e_button {
+    font-family: Quicksand, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px;
+    background-color: transparent;
+    outline: 3px solid #444;
+    border: 0;
+    cursor: pointer
+}
+/* src/js/deck/index.css */
+.mcfa399204_cage {
+    background: url("../img/cage-icon.svg") left center no-repeat
+}
+.mcfa399204_padded-cage {
+    padding-left: 44px
 }

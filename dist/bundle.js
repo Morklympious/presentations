@@ -17020,9 +17020,14 @@ function configure(element, initialized) {
 
 m.render(document.body, m("div", {class: "reveal", config: configure}, require("./js/slides.js")));
 
-},{"./css/global.css":7,"./css/import-codemirror.css":8,"./css/import-reveal.css":9,"./js/slides.js":21,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
-var m = require("mithril"),
-    editor = require("codemirror");
+},{"./css/global.css":7,"./css/import-codemirror.css":8,"./css/import-reveal.css":9,"./js/slides.js":23,"mithril":5,"reveal.js":6}],11:[function(require,module,exports){
+module.exports = {
+    "button": "mce898b65e_button"
+};
+},{}],12:[function(require,module,exports){
+var m      = require("mithril"),
+    editor = require("codemirror"),
+    css    = require('./codemirror.css');
 
 // Extra codemirror packages that need to be bundled.
 require('codemirror/mode/javascript/javascript');
@@ -17063,6 +17068,7 @@ var component = {
         }
       }),
       m("button", {
+        class: css.button,
         onclick: function() {
           eval("(function() {" + ctrl.editor.getValue() + "})()")
         } 
@@ -17073,18 +17079,35 @@ var component = {
 
 module.exports = component;
 
-},{"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5}],12:[function(require,module,exports){
-var  m = require("mithril"),
-  code = require("../cmp/codemirror"),
-  fragment = {class: "fragment"};
+},{"./codemirror.css":11,"codemirror":3,"codemirror/addon/edit/closebrackets":1,"codemirror/addon/edit/matchbrackets":2,"codemirror/mode/javascript/javascript":4,"mithril":5}],13:[function(require,module,exports){
+module.exports = {
+    "cage": "mcfa399204_cage",
+    "padded-cage": "mcfa399204_cage mcfa399204_padded-cage"
+};
+},{}],14:[function(require,module,exports){
+var  m     = require("mithril"),
+  code     = require("../cmp/codemirror"),
+  fragment = {class: "fragment"},
+  css      = require("./index.css");
 
 
 module.exports = [
   {
     view: function() {
       return m("section", {}, [
+        m("section", [
           m("h1", "The Prototype"),
           m("h2", "What is even happening right now?")
+        ]),
+        m("section", [
+          m("h1", "The Prototype"),
+          m("h2", "Who is this strange man and why is he here to tell me what I already know?")
+        ]),
+        m("section", [
+          m("h1", "The Prototype"),
+          m("h2", "Somebody told me there was a Charizard in here and now I'm stuck in this office with you nerds.")
+        ])
+         
       ]);
     }
   },
@@ -17098,7 +17121,7 @@ module.exports = [
             m("li", fragment, "Bradley Stafford"),
             m("li", fragment, "Front-end Engineer @ Amazon (AUI Team)"),
             m("li", fragment, "Code Jester"),
-            m("li", fragment, "Nicolas Cage enthusiast"),
+            m("li", {class: "fragment " + css["padded-cage"]}, "Nicolas Cage enthusiast"),
             m("li", fragment, "Non-sequitur list creator"),
             m("li", fragment, "Hats")
           ])
@@ -17115,11 +17138,12 @@ module.exports = [
       m("ul", [
         m("li", fragment, "Object allowing inheritance and reusability"),
         m("li", fragment, "gives basic, free functionality of the major types"),
-        m("li", fragment, "Each type has its respective prototype + object")
+        m("li", fragment, "Each type has its respective prototype + object"),
+        m("li", fragment, "\"Everything in javscript is an object\" (even Functions!)")
       ]),
       m("h2", fragment, "If you come from an OO background..."),
       m("ul", [
-        m("li", fragment, m("code", "Class Object extends Object.prototype"))
+        m("li", fragment, m("code", "Class Type extends Type.prototype"))
       ])
      ]);
     }
@@ -17139,7 +17163,7 @@ module.exports = [
    view: function() {
      return m("section", {}, [
        m("h1", "Why does this work?"),
-       m("h2", "Asking for a friend"),
+       m("h2", fragment, "Asking for a friend"),
        m("ul", [
          m("li", fragment, "The Prototype chain"),
          m("li", fragment, "A singly-linked linked-list"),
@@ -17154,7 +17178,7 @@ module.exports = [
   { // Object with toBradley Example
    view: function() {
     return m("section", {}, [
-      m("h1", "Talking about code sucks. (Pt. II)"),
+      m("h1", "Talking about code sucks. (Pt. II -- The reckoning)"),
       m(code, {code: require("../examples/prototype-chain-example") })
     ]);
    }
@@ -17231,9 +17255,9 @@ module.exports = [
         m("section", [
           m("h1", "Ways to MISUSE Prototypes"),
           m("ul", [
-            m("li", "This is like a blank check"),
-            m("li", "full of different, shiny guns"),
-            m("li", "...to shoot yourself in the foot")
+            m("li", fragment, "This is like a blank check"),
+            m("li", fragment, "full of different, shiny guns"),
+            m("li", fragment, "...to shoot yourself in the foot")
           ])
         ])
       ]);
@@ -17290,9 +17314,8 @@ module.exports = [
 
 ]
 
-},{"../cmp/codemirror":11,"../examples/borrowing-example":13,"../examples/constructor-pattern-example":14,"../examples/delegation-example":15,"../examples/first-prototype-example":16,"../examples/inheritance-example":17,"../examples/nicolas-cage-example":18,"../examples/object-create-example":19,"../examples/prototype-chain-example":20,"mithril":5}],13:[function(require,module,exports){
+},{"../cmp/codemirror":12,"../examples/borrowing-example":15,"../examples/constructor-pattern-example":16,"../examples/delegation-example":17,"../examples/first-prototype-example":18,"../examples/inheritance-example":19,"../examples/nicolas-cage-example":20,"../examples/object-create-example":21,"../examples/prototype-chain-example":22,"./index.css":13,"mithril":5}],15:[function(require,module,exports){
 module.exports = [
-  "",
   "function memoize(fn) {",
   "  var cache = {}",
   "",
@@ -17306,56 +17329,74 @@ module.exports = [
   "  }",
   "}"
 ].join("\n")
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = [
+  "function NicolasCage() {",
+  "  // ...stuff ",
+  "}",
   "",
   "function LiterallyTrash() {",
   " // __prototype__ = LiterallyTrash.prototype",
   "}",
   "",
-  "",
-  "",
+  "LiterallyTrash.prototype = new NicolasCage()",
+  "LiterallyTrash.prototype.onFire = false;",
   "", 
   ""
 ].join("\n")
-},{}],15:[function(require,module,exports){
-arguments[4][13][0].apply(exports,arguments)
-},{"dup":13}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = [
-  "var obj = { ",
+  "var object = { ",
+  "  hasOwnProperty: function() { ",
+  "    return \"lololololol\"; ",
+  "  }",
+  "}",
+  "",
+  "alert(object.hasOwnProperty('hasOwnProperty'))",             
+].join("\n")
+},{}],18:[function(require,module,exports){
+module.exports = [
+  "var nicolas = { ",
   "  films: ['National Treasure', 'Wicker man', 'Drive Angry'],",
   "  brilliant: true",
   "}",
   "",
   "// Properties on an object are accessible via dot (.) notation",
   "// or bracket [] notation",
-  "obj.films // => ['National Treasure', 'Wicker man', 'Drive Angry']",
-  "obj.brilliant // => true",
+  "nicolas.films // => ['National Treasure', 'Wicker man', 'Drive Angry']",
+  "nicolas.brilliant // => true",
   "",
-  "// What about an unseen property?"
+  "// What about another property?"
 ].join("\n")
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = [
-  "var hero = {",
-  "  hp: 200,",
-  "  shields: null,",
-  "  ultimate: null",
+  "var presenter = {",
+  "  name: \"Unknown\",",
+  "  cool: false,",
+  "  volume: \"normal\"",
   "}",
   "",
-  "function Zenyatta() {",
-  "  this.name = 'Zenyatta';",
-  "  this.hp = 50;",
-  "  this.shields = 150",
-  "  this.ultimate = new Ultimate('transcendance', { /*...*/ });",
+  "function Speaker(props) {",
+  "  // Merging properties to override Prototype",
+  "  Object.assign({}, this, props)",
+  "",
+  "",
   "}",
   "",
-  "Zenyatta.prototype = hero;",
+  "Bradley.prototype = presenter;",
   "", 
-  "var z = new Zenyatta();",
+  "var b = new Bradley({volume: \"loud\", cool: \"true\", custom: \"property\"});",
   "",
+  "/*",
+  "{",
+  "  volume: \"loud\",",
+  "  cool: \"true\",",
+  "  custom: \"property\",",
   "",
+  "}",
+  "*/"
 ].join("\n")
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = [
   "// Constructor with properties on itself",
   "function NicolasCage() {",
@@ -17370,7 +17411,7 @@ module.exports = [
   "var hero = new NicolasCage();",
   ""
 ].join("\n")
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = [
   "// Plain 'ol javascript object",
   "var one = Object.create(null),",
@@ -17382,7 +17423,7 @@ module.exports = [
   "var three = Object.create(new Object(), { local: 'to this object' })", 
   ""
 ].join("\n")
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = [
   "// The Prototype Chain in action",
   "Object.prototype.toBradley = function() {",
@@ -17393,7 +17434,7 @@ module.exports = [
   "var obj = {},",
   "    objTwo = new Object();"
 ].join("\n")
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var m = require("mithril");
 
 var component = {
@@ -17404,4 +17445,4 @@ var component = {
 
 module.exports = component;
 
-},{"./deck":12,"mithril":5}]},{},[10]);
+},{"./deck":14,"mithril":5}]},{},[10]);
