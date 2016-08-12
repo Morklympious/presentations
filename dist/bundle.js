@@ -17182,7 +17182,7 @@ module.exports = [
   { // Object with toBradley Example
    view: function() {
     return m("section", {}, [
-      m("h1", "Talking about code sucks. (Pt. II -- The reckoning)"),
+      m("h1", "Talking about code still sucks"),
       m(code, {code: require("../examples/prototype-chain-example") })
     ]);
    }
@@ -17195,9 +17195,9 @@ module.exports = [
           m("h1", "Prototypes unltd."),
           m("ul", [
             m("li", fragment, "Custom objects can have a prototype"),
-            m("li", fragment, "Delegation is ideal for constant member props"),
-            m("li", fragment, "Persistent data"),
-            m("li", fragment, "Easy to override for use-cases")
+            m("li", fragment, "Custom objects can inherit from other custom objects"),
+            m("li", fragment, " \"Shared\" Data across instances"),
+            m("li", fragment, "Easy to override per-instance")
           ])
         ]),
         m("section", [
@@ -17221,6 +17221,10 @@ module.exports = [
             m("li", fragment, "If yes, look at that object and see if it's there"),
             m("li", fragment, "If not, return to step 2")
           ]),
+          m("p", fragment, "Also, don't forget..."),
+          m("ul", [
+            m("li", fragment, "assigning values to your immediate object overrides the prototype delegation!")
+          ])
         ])
       ]);
     }
@@ -17232,19 +17236,19 @@ module.exports = [
         m("section", [
           m("h1", "Ways to use Prototypes"),
           m("ul", [
-            m("li", fragment, "Delegation"),
             m("li", fragment, "Inheritance"),
-            m("li", fragment, "Method borrowing"),
+             m("li", fragment, "Mixins"),
+            m("li", fragment, "Method borrowing")
           ])
         ]),
-        m("section", [
-          m("h1", "Delegation"),
-          m(code, {code: require("../examples/delegation-example")})
-        ]),        
         m("section", [
           m("h1", "Inheritance"),
           m(code, {code: require("../examples/inheritance-example")})
         ]),
+        m("section", [
+          m("h1", "Mixins"),
+          m(code, {code: require("../examples/mixin-example")})
+        ]),        
         m("section", [
           m("h1", "Method Borrowing"),
           m(code, {code: require("../examples/borrowing-example")})
@@ -17273,8 +17277,9 @@ module.exports = [
       return m("section", [
         m("section", [
           m("h1", "Funsies, not footguns"),
-          m("h2", "Tools for make you understand many better for great good"),
-          m("p", "Different tools to achieve the same thing")
+          m("h2", fragment, "Tools for make you understand many better for great good"),
+          m("p", fragment,  "Different tools to achieve the same thing"),
+          m("img", {src: "dist/img/funsies-cage.gif", class: "fragment " + css.gif})
         ]),
         m("section", [
           m("h1", "Constructor Pattern"),
@@ -17299,7 +17304,8 @@ module.exports = [
            m("li", fragment, "Prototypes are useful"),
            m("li", fragment, "Constructor pattern -> runtime prototype creation"),
            m("li", fragment, "Object.create -> compile-time prototype creation"),
-           m("li", fragment, "Prototypes can be extensible, flexible, useful"),
+           m("li", fragment, "If you have a lot of objects, consider delegation"),
+           m("li", fragment, "explicitly declaring object values means js won't look upstream for them"),
            m("li", fragment, "All of these eyes on me burn")
          ])
        ])
@@ -17332,20 +17338,18 @@ module.exports = [
 
 ]
 
-},{"../cmp/codemirror":12,"../examples/borrowing-example":15,"../examples/constructor-pattern-example":16,"../examples/delegation-example":17,"../examples/first-prototype-example":18,"../examples/inheritance-example":19,"../examples/nicolas-cage-example":20,"../examples/object-create-example":21,"../examples/prototype-chain-example":22,"./index.css":13,"mithril":5}],15:[function(require,module,exports){
+},{"../cmp/codemirror":12,"../examples/borrowing-example":15,"../examples/constructor-pattern-example":16,"../examples/first-prototype-example":17,"../examples/inheritance-example":18,"../examples/mixin-example":19,"../examples/nicolas-cage-example":20,"../examples/object-create-example":21,"../examples/prototype-chain-example":22,"./index.css":13,"mithril":5}],15:[function(require,module,exports){
 module.exports = [
-  "function memoize(fn) {",
-  "  var cache = {}",
-  "",
+  "function variadic() {",
   "  // HELLO ARRAY YES PLEASE I NEED THIS THANK YOU",
   "  var args = Array.prototype.slice.call(arguments, 1)",
   "",
-  "  return function() { ",
-  "    var key = JSON.stringify(arguments)",
+  "  return args;",
+  "}",
   "",
-  "    return cache[key] ? cache[key] : fn.apply(null, args.concat.arguments)",
-  "  }",
-  "}"
+  "// Joining a string!",
+  "Array.prototype.join.call(\"AESTHETIC\", \" \") // --> A E S T H E T I C",
+  ""
 ].join("\n")
 },{}],16:[function(require,module,exports){
 module.exports = [
@@ -17360,19 +17364,12 @@ module.exports = [
   "LiterallyTrash.prototype = new NicolasCage()",
   "LiterallyTrash.prototype.onFire = false;",
   "", 
+  "var stopDoingNicCageExamples = new LiterallyTrash();",
+  "",
+  "// the new object now has NicolasCage in its prototype chain (runtime)",
   ""
 ].join("\n")
 },{}],17:[function(require,module,exports){
-module.exports = [
-  "var object = { ",
-  "  hasOwnProperty: function() { ",
-  "    return \"lololololol\"; ",
-  "  }",
-  "}",
-  "",
-  "alert(object.hasOwnProperty('hasOwnProperty'))",             
-].join("\n")
-},{}],18:[function(require,module,exports){
 module.exports = [
   "var nicolas = { ",
   "  films: ['National Treasure', 'Wicker man', 'Drive Angry'],",
@@ -17387,34 +17384,53 @@ module.exports = [
   "// What about another property?",
   "alert()"
 ].join("\n")
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = [
-  "// In the formal definition, inheritance isn't present in javascript",
-  "var presenter = {",
-  "  name: \"Unknown\",",
-  "  cool: false,",
-  "  volume: \"normal\"",
+  "// Classical inheritance -- Superclass",
+  "function Presenter() {",
+  "  this.name   = \"Unknown\";",
+  "  this.cool   = false;",
+  "  this.volume = \"normal\";",
   "}",
   "",
-  "// Currently still delegating",
-  "function Speaker(props) {",
-  "  // Merging properties to make local overrides",
-  "  Object.assign({}, this, props)",
+  "// Classical inheritance -- Subclass",
+  "function Speaker() {",
+  "  // Use call to run Presenter fn with 'this' context set",
+  "  Presenter.call(this);",
+  "  this.custom = \"property\"",
   "}",
   "",
-  "Speaker.prototype = presenter;",
-  "", 
-  "var bradley = new Speaker({volume: \"loud\", cool: \"true\", custom: \"property\"});",
+  "Speaker.prototype = new Presenter();",
+  "Speaker.prototype.constructor = Speaker;",
+  "",
+  "var bradley = new Speaker();",
   "",
   "/*",
   "{",
-  "  volume: \"loud\",     // --> Passed in to override Speaker.prototype.volume",
-  "  cool: \"true\",       // --> Passed in to override Speaker.prototype.cool",
-  "  custom: \"property\", // --> Local to this property",
-  "  name: \"Unknown\"     // --> Delegating to Speaker.prototype",
+  "  volume: \"loud\",     // --> inherited (copied) locally from Presenter",
+  "  cool: \"true\",       // --> inherited (copied) locally from Presenter",
+  "  custom: \"property\", // --> defined locally on Speaker",
+  "  name: \"Unknown\"     // --> inherited (copied) locally from Presenter",
   "}",
   "*/"
 ].join("\n")
+},{}],19:[function(require,module,exports){
+module.exports = [
+  "// Mixins",
+  "function mixin(base, protos) {",
+  "  var self = this;",
+  "",
+  "  protos.forEach(function(proto) {",
+  "    Object.assign({}, base, proto)",
+  "  });",
+  "}",
+  "",
+  "function FrankenType() {",
+  "  // KILL IT. KILL IT WITH FIRE",
+  "  mixin(this, [Object.prototype, Array.prototype, String.prototype])",
+  "}",
+  ""
+].join("\n");
 },{}],20:[function(require,module,exports){
 module.exports = [
   "// Constructor with properties on itself",

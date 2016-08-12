@@ -94,7 +94,7 @@ module.exports = [
   { // Object with toBradley Example
    view: function() {
     return m("section", {}, [
-      m("h1", "Talking about code sucks. (Pt. II -- The reckoning)"),
+      m("h1", "Talking about code still sucks"),
       m(code, {code: require("../examples/prototype-chain-example") })
     ]);
    }
@@ -107,9 +107,9 @@ module.exports = [
           m("h1", "Prototypes unltd."),
           m("ul", [
             m("li", fragment, "Custom objects can have a prototype"),
-            m("li", fragment, "Delegation is ideal for constant member props"),
-            m("li", fragment, "Persistent data"),
-            m("li", fragment, "Easy to override for use-cases")
+            m("li", fragment, "Custom objects can inherit from other custom objects"),
+            m("li", fragment, " \"Shared\" Data across instances"),
+            m("li", fragment, "Easy to override per-instance")
           ])
         ]),
         m("section", [
@@ -133,6 +133,10 @@ module.exports = [
             m("li", fragment, "If yes, look at that object and see if it's there"),
             m("li", fragment, "If not, return to step 2")
           ]),
+          m("p", fragment, "Also, don't forget..."),
+          m("ul", [
+            m("li", fragment, "assigning values to your immediate object overrides the prototype delegation!")
+          ])
         ])
       ]);
     }
@@ -144,19 +148,19 @@ module.exports = [
         m("section", [
           m("h1", "Ways to use Prototypes"),
           m("ul", [
-            m("li", fragment, "Delegation"),
             m("li", fragment, "Inheritance"),
-            m("li", fragment, "Method borrowing"),
+             m("li", fragment, "Mixins"),
+            m("li", fragment, "Method borrowing")
           ])
         ]),
-        m("section", [
-          m("h1", "Delegation"),
-          m(code, {code: require("../examples/delegation-example")})
-        ]),        
         m("section", [
           m("h1", "Inheritance"),
           m(code, {code: require("../examples/inheritance-example")})
         ]),
+        m("section", [
+          m("h1", "Mixins"),
+          m(code, {code: require("../examples/mixin-example")})
+        ]),        
         m("section", [
           m("h1", "Method Borrowing"),
           m(code, {code: require("../examples/borrowing-example")})
@@ -185,8 +189,9 @@ module.exports = [
       return m("section", [
         m("section", [
           m("h1", "Funsies, not footguns"),
-          m("h2", "Tools for make you understand many better for great good"),
-          m("p", "Different tools to achieve the same thing")
+          m("h2", fragment, "Tools for make you understand many better for great good"),
+          m("p", fragment,  "Different tools to achieve the same thing"),
+          m("img", {src: "dist/img/funsies-cage.gif", class: "fragment " + css.gif})
         ]),
         m("section", [
           m("h1", "Constructor Pattern"),
@@ -211,7 +216,8 @@ module.exports = [
            m("li", fragment, "Prototypes are useful"),
            m("li", fragment, "Constructor pattern -> runtime prototype creation"),
            m("li", fragment, "Object.create -> compile-time prototype creation"),
-           m("li", fragment, "Prototypes can be extensible, flexible, useful"),
+           m("li", fragment, "If you have a lot of objects, consider delegation"),
+           m("li", fragment, "explicitly declaring object values means js won't look upstream for them"),
            m("li", fragment, "All of these eyes on me burn")
          ])
        ])
